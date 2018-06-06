@@ -1,0 +1,13 @@
+<form (submit)="addNewMessage()">
+          <!-- <div id="messages">
+            <% for (var x in key) { %>
+              <p>
+                <%= key[x].name %>:
+                  <%= key[x].message %>
+              </p>
+              <% } %>
+          </div> -->
+
+  <input type="text" name="message" [(ngModel)]="message">
+  <button>Send</button>
+</form>

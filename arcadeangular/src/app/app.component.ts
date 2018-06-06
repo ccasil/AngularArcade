@@ -8,13 +8,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+
   constructor(
     private _httpService: HttpService,
     private _route: ActivatedRoute,
-    private _router: Router) {}
+    private _router: Router
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 }
-

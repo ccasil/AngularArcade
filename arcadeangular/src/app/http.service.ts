@@ -9,18 +9,14 @@ const SERVER_URL = 'http://localhost:8000';
 @Injectable()
 export class HttpService {
 
+  private socket;
   player: any;
   socketid: any;
-  private socket;
 
   constructor(private _http: HttpClient) { }
 
   addNewPlayer(player) {
     return this._http.post('/player', player);
-  }
-
-  startgame() {
-    return this._http.get('/startgame');
   }
 
   broadcast() {
@@ -37,8 +33,28 @@ export class HttpService {
     });
   }
 
+  clear() {
+    this.socket.emit('clear');
+  }
+
   initSocket() {
     this.socket = io(SERVER_URL);
+  }
+
+  send(message) {
+    this.socket.emit('message', message);
+  }
+
+  onMessage() {
+    return new Observable<object>(observer => {
+      this.socket.on('message', (data) => observer.next(data));
+    });
+  }
+
+  onUpdate() {
+    return new Observable<object>(observer => {
+      this.socket.on('update', (data) => observer.next(data));
+    });
   }
 
   onEvent(event) {
@@ -47,14 +63,12 @@ export class HttpService {
     });
   }
 
-  oninitial() {
+  whenInit() {
     return new Observable<object>(observer => {
-      this.socket.on('initial', (data) => {
+      this.socket.on('init', (data) => {
         observer.next(data);
-        console.log('12342q353545', data);
         this.socketid = data['socketid'];
       });
-
     });
   }
 

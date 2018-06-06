@@ -8,17 +8,16 @@ import { AppComponent } from './app.component';
 import { HttpService } from './http.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
+
+import { LoginComponent } from './login/login.component';
 import { ArcadeComponent } from './arcade/arcade.component';
-import { TictactoeComponent } from './tictactoe/tictactoe.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ArcadeComponent,
-    TictactoeComponent
+    LoginComponent,
+    ArcadeComponent
   ],
   imports: [
     BrowserModule,

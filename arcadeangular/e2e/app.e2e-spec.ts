@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('angular-arcade-angular App', () => {
+describe('arcadeangular App', () => {
   let page: AppPage;
 
   beforeEach(() => {
