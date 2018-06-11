@@ -87,16 +87,23 @@ let io = require('socket.io').listen(server);
 
 io.sockets.on('connection', (socket) => {
 
-    socket.emit('initial', { socketid: socket.id });
+    socket.emit('init', { 
+        socketid: socket.id 
+    });
     console.log("Socket has connected at ", socket.id);
 
-    socket.broadcast.emit('other: connection', { message: 'hello friends!' });
+    socket.broadcast.emit('other: connection', { 
+        message: 'hello friends!' 
+    });
 
     socket.on('message', function (data) {
         console.log(data)
+        socket.emit('message', { 
+            message: data 
+        });
     })
 
-    socket.on("disconnect", function () {
+    socket.on('disconnect', function () {
         console.log("a player has disconnected")
     })
 

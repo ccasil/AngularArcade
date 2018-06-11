@@ -19,6 +19,10 @@ export class HttpService {
     return this._http.post('/player', player);
   }
 
+  addNewMessage(message) {
+    return this._http.post('/message', message);
+  }
+
   broadcast() {
     // console.log(message)
     this.socket.emit('broadcasting');

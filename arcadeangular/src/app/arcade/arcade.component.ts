@@ -9,6 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class ArcadeComponent implements OnInit {
 
+  newMessage: any;
   player: any;
   io;
   ioConnection: any;
@@ -29,6 +30,10 @@ export class ArcadeComponent implements OnInit {
 
   public addNewMessage() {
     console.log('in arcade component');
+    const observable = this._httpService.addNewMessage(this.newMessage);
+    observable.subscribe(data => {
+    console.log('said: ', this.newMessage);
+    });
   }
 
   private initToConnection() {

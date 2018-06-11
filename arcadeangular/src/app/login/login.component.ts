@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   addNewPlayer() {
     console.log('in home component');
 
-    // this.newPlayer.name = name //need this line to get name from the html
+    // this.newPlayer.name = name; // need this line to get name from the html
     const observable = this._httpService.addNewPlayer(this.newPlayer);
     observable.subscribe(data => {
     if ((data as any).message === 'Success') {
@@ -53,20 +53,20 @@ export class LoginComponent implements OnInit {
     });
 
 
-    // this._httpService.onEvent('initial').subscribe(()=> {
-    //   console.log("a new instance was made")
-
+    // this._httpService.onEvent('init').subscribe(() => {
+    //   console.log('a new instance was made');
     // });
+
     this.ioConnection = this._httpService.whenInit().subscribe((data) => {
       console.log(data);
-      // this.socketid = data['socketid']
+      // this.socketid = data['socketid'];
       this.newPlayer.socketid = data['socketid'];
       console.log(this.newPlayer);
     });
 
     // this._httpService.onEvent('disconnect').subscribe(() => {
     //   console.log('Somebody disconnected!');
-    //   this._httpService.send({message: "a socket has disconnected"})
+    //   this._httpService.send({message: 'a socket has disconnected'});
     // });
   }
 
